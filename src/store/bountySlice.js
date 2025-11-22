@@ -39,6 +39,7 @@ const initialState = {
     1: false,
     2: false,
   },
+  data: null,
 };
 
 const bountySlice = createSlice({
@@ -84,6 +85,9 @@ const bountySlice = createSlice({
         state.currentStep -= 1;
       }
     },
+    setData: (state, action) => {
+      state.data = action.payload;
+    }
   },
 });
 
@@ -95,6 +99,7 @@ export const {
   resetForm,
   nextStep,
   previousStep,
+  setData,
 } = bountySlice.actions;
 
 export default bountySlice.reducer;

@@ -38,7 +38,7 @@ export default function Sidebar({ onStepClick }) {
         <h1 className="text-xl font-semibold text-gray-500">Bounty Steps</h1>
       </div>
 
-      <nav className="">
+      <nav className="flex md:flex-col">
         {steps.map((step) => {
           const isActive = currentStep === step.id;
           const isCompleted = stepValidation[step.id];

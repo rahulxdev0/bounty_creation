@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { setCurrentStep, nextStep, previousStep, setStepValidation, resetForm } from '../store/bountySlice';
+import { setCurrentStep, nextStep, previousStep, setStepValidation, resetForm, setData } from '../store/bountySlice';
 import Sidebar from './Sidebar';
 import Step1BasicDetails from './steps/Step1BasicDetails';
 import Step2RewardsTimeline from './steps/Step2RewardsTimeline';
@@ -206,6 +206,7 @@ export default function BountyFormWizard() {
       };
 
       console.log('Bounty Payload:', payload);
+      dispatch(setData(payload));
       
       setIsSubmitting(false);
       
@@ -234,14 +235,14 @@ export default function BountyFormWizard() {
   };
 
   return (
-    <div className="grid grid-cols-12 min-h-screen max-w-6xl mx-auto w-full items-center justify-center">
-      <div className="col-span-2 h-full">
+    <div className="flex flex-col md:grid  md:grid-cols-12 min-h-screen max-w-6xl mx-auto w-full items-center justify-center">
+      <div className="md:col-span-2 h-full">
         <Sidebar onStepClick={handleStepClick} />
       </div>
 
-      <div className="flex-1 p-8 col-span-8 w-full">
+      <div className="flex-1 p-8 md:col-span-8 w-full">
         <div className="max-w-3xl mx-auto">
-          <div className=" p-8">
+          <div className=" md:p-8">
             {renderStep()}
 
             <div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
